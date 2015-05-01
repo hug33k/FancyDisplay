@@ -53,22 +53,22 @@
 
 typedef enum	e_FancyClr
 {
-	FCLR_BLK,
-	FCLR_RED,
-	FCLR_GRN,
-	FCLR_YLW,
-	FCLR_BLU,
-	FCLR_PPL,
-	FCLR_CYN,
-	FCLR_WHT,
+	BLACK,
+	RED,
+	GREEN,
+	YELLOW,
+	BLUE,
+	PURPLE,
+	CYAN,
+	WHITE,
 }				t_FancyClr;
 
 typedef enum	e_FancyType
 {
-	FTYP_NRM,
-	FTYP_BLD,
-	FTYP_NDR,
-	FTYP_BKG,
+	NORMAL,
+	BOLD,
+	UNDERLINE,
+	BACKGROUND,
 }				t_FancyType;
 
 /*

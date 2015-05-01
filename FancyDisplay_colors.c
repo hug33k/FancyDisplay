@@ -6,28 +6,28 @@ static void	FancyDisplay_setRegular(FancyClr clr)
 {
 	switch (clr)
 	{
-		case (FCLR_BLK):
+		case (BLACK):
 			SHOW(CLR_BLK);
 			break;
-		case (FCLR_RED):
+		case (RED):
 			SHOW(CLR_RED);
 			break;
-		case (FCLR_GRN):
+		case (GREEN):
 			SHOW(CLR_GRN);
 			break;
-		case (FCLR_YLW):
+		case (YELLOW):
 			SHOW(CLR_YLW);
 			break;
-		case (FCLR_BLU):
+		case (BLUE):
 			SHOW(CLR_BLU);
 			break;
-		case (FCLR_PPL):
+		case (PURPLE):
 			SHOW(CLR_PPL);
 			break;
-		case (FCLR_CYN):
+		case (CYAN):
 			SHOW(CLR_CYN);
 			break;
-		case (FCLR_WHT):
+		case (WHITE):
 			SHOW(CLR_WHT);
 			break;
 		default:
@@ -39,28 +39,28 @@ static void	FancyDisplay_setBold(FancyClr clr)
 {
 	switch (clr)
 	{
-		case (FCLR_BLK):
+		case (BLACK):
 			SHOW(CLR_BLK_B);
 			break;
-		case (FCLR_RED):
+		case (RED):
 			SHOW(CLR_RED_B);
 			break;
-		case (FCLR_GRN):
+		case (GREEN):
 			SHOW(CLR_GRN_B);
 			break;
-		case (FCLR_YLW):
+		case (YELLOW):
 			SHOW(CLR_YLW_B);
 			break;
-		case (FCLR_BLU):
+		case (BLUE):
 			SHOW(CLR_BLU_B);
 			break;
-		case (FCLR_PPL):
+		case (PURPLE):
 			SHOW(CLR_PPL_B);
 			break;
-		case (FCLR_CYN):
+		case (CYAN):
 			SHOW(CLR_CYN_B);
 			break;
-		case (FCLR_WHT):
+		case (WHITE):
 			SHOW(CLR_WHT_B);
 			break;
 		default:
@@ -72,28 +72,28 @@ static void	FancyDisplay_setUnderline(FancyClr clr)
 {
 	switch (clr)
 	{
-		case (FCLR_BLK):
+		case (BLACK):
 			SHOW(CLR_BLK_U);
 			break;
-		case (FCLR_RED):
+		case (RED):
 			SHOW(CLR_RED_U);
 			break;
-		case (FCLR_GRN):
+		case (GREEN):
 			SHOW(CLR_GRN_U);
 			break;
-		case (FCLR_YLW):
+		case (YELLOW):
 			SHOW(CLR_YLW_U);
 			break;
-		case (FCLR_BLU):
+		case (BLUE):
 			SHOW(CLR_BLU_U);
 			break;
-		case (FCLR_PPL):
+		case (PURPLE):
 			SHOW(CLR_PPL_U);
 			break;
-		case (FCLR_CYN):
+		case (CYAN):
 			SHOW(CLR_CYN_U);
 			break;
-		case (FCLR_WHT):
+		case (WHITE):
 			SHOW(CLR_WHT_U);
 			break;
 		default:
@@ -106,28 +106,28 @@ static void	FancyDisplay_setBackground(FancyClr clr)
 {
 	switch (clr)
 	{
-		case (FCLR_BLK):
+		case (BLACK):
 			SHOW(CLR_BLK_BK);
 			break;
-		case (FCLR_RED):
+		case (RED):
 			SHOW(CLR_RED_BK);
 			break;
-		case (FCLR_GRN):
+		case (GREEN):
 			SHOW(CLR_GRN_BK);
 			break;
-		case (FCLR_YLW):
+		case (YELLOW):
 			SHOW(CLR_YLW_BK);
 			break;
-		case (FCLR_BLU):
+		case (BLUE):
 			SHOW(CLR_BLU_BK);
 			break;
-		case (FCLR_PPL):
+		case (PURPLE):
 			SHOW(CLR_PPL_BK);
 			break;
-		case (FCLR_CYN):
+		case (CYAN):
 			SHOW(CLR_CYN_BK);
 			break;
-		case (FCLR_WHT):
+		case (WHITE):
 			SHOW(CLR_WHT_BK);
 			break;
 		default:
@@ -139,16 +139,16 @@ void	FancyDisplay_setColor(FancyClr clr, FancyType type)
 {
 	switch (type)
 	{
-		case (FTYP_NRM):
+		case (NORMAL):
 			FancyDisplay_setRegular(clr);
 			break;
-		case (FTYP_BLD):
+		case (BOLD):
 			FancyDisplay_setBold(clr);
 			break;
-		case (FTYP_NDR):
+		case (UNDERLINE):
 			FancyDisplay_setUnderline(clr);
 			break;
-		case (FTYP_BKG):
+		case (BACKGROUND):
 			FancyDisplay_setBackground(clr);
 			break;
 		default:
