@@ -12,16 +12,20 @@ msg = FancyDisplay_newMessage("Your message", CYAN, BOLD);
 FancyDisplay_show(msg);
 ````
 
+usage.c is comming soon...
+
 ## TODO
 
 * FancyDisplay_printf(char *, ...)
     * Modified printf with %FD flag
 * FancyTable
     * Colorful table
-* FancyInfo (FancyMsg with status code)
-    * Colorful information message
 
 ## Informations
+
+* Available modes
+    * FancyMsg
+    * FancyInfo (Works with FancyStatus)
 
 * Available colors
     * Black
@@ -33,7 +37,7 @@ FancyDisplay_show(msg);
     * Cyan
     * White
 
-* Available modes
+* Available types
     * Normal
     * Bold
     * Underline

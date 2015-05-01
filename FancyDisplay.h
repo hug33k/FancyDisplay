@@ -75,12 +75,27 @@ typedef enum	e_FancyType
 ** Structures
 */
 
-typedef	struct			s_FancyMsg
+typedef	struct		s_FancyMsg
 {
-	char				*msg;
-	t_FancyClr			clr;
-	t_FancyType			typ;
-}						t_FancyMsg;
+	char			*msg;
+	t_FancyClr		clr;
+	t_FancyType		typ;
+}					t_FancyMsg;
+
+typedef struct			s_FancyStatus
+{
+	char					*name;
+	int						value;
+	t_FancyClr				clr;
+	t_FancyType				typ;
+	struct s_FancyStatus	*next;
+}							t_FancyStatus;
+
+typedef struct		s_FancyInfo
+{
+	t_FancyMsg*		msg;
+	int				value;
+}					t_FancyInfo;
 
 /*
 ** Typedefs
@@ -89,6 +104,16 @@ typedef	struct			s_FancyMsg
 typedef t_FancyMsg*		FancyMsg;
 typedef t_FancyClr		FancyClr;
 typedef t_FancyType		FancyType;
+typedef t_FancyStatus*	FancyStatus;
+typedef t_FancyInfo*	FancyInfo;
+
+/*
+** Global variables
+*/
+extern FancyStatus	FancyStatusList;
+extern char*		FancyStatusBoxOpen;
+extern char*		FancyStatusBoxClose;
+extern int			FancyStatusBoxMargin;
 
 /*
 ** Macros
@@ -100,12 +125,23 @@ typedef t_FancyType		FancyType;
 ** Functions
 */
 
-/* _base.c */
+/* _message.c */
 FancyMsg	FancyDisplay_newMessage(char*, FancyClr, FancyType);
-void		FancyDisplay_show(FancyMsg);
+void		FancyDisplay_showMessage(FancyMsg);
+void		FancyDisplay_deleteMessage(FancyMsg);
 
-/* _colors.c */
+/* _color.c */
 void		FancyDisplay_setColor(FancyClr, FancyType);
 void		FancyDisplay_resetColor(void);
+
+/* _status.c */
+void		FancyDisplay_addStatus(char*, int, FancyClr, FancyType);
+void		FancyDisplay_deleteStatus(void);
+void		FancyDisplay_setStatusBox(char*, char*, int);
+
+/*  _info.c */
+FancyInfo	FancyDisplay_newInfo(char*, FancyClr, FancyType, int);
+void		FancyDisplay_showInfo(FancyInfo);
+void		FancyDisplay_deleteInfo(FancyInfo);
 
 #endif /* !FANCY_DISPLAY_H_ */

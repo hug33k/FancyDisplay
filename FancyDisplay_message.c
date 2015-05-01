@@ -15,13 +15,20 @@ FancyMsg	FancyDisplay_newMessage(char *msg, FancyClr clr, FancyType type)
 	return (new);
 }
 
-void	FancyDisplay_show(FancyMsg msg)
+void	FancyDisplay_showMessage(FancyMsg msg)
 {
 	if (!msg)
 		return;
 	FancyDisplay_setColor(msg->clr, msg->typ);
 	SHOW(msg->msg);
 	FancyDisplay_resetColor();
+	SHOW("\n");
+}
+
+void	FancyDisplay_deleteMessage(FancyMsg msg)
+{
+	if (!msg)
+		return;
 	free(msg->msg);
 	free(msg);
 }
