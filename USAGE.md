@@ -39,7 +39,7 @@ FancyDisplay_addStatus("INFO", STATUS_INFO, CYAN, BOLD);
 
 /* Set the status box
 **
-** FancyDisplay_setStatusBox(left, right, pagination)
+** FancyDisplay_setStatusBox(left, right, pagination between box and information)
 */
 FancyDisplay_setStatusBox("[", "]", STATUS_BOX_PAGINATION);
 ````
