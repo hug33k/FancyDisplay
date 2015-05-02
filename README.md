@@ -12,7 +12,7 @@ msg = FancyDisplay_newMessage("Your message", CYAN, BOLD);
 FancyDisplay_show(msg);
 ````
 
-usage.c is comming soon...
+You can see more [here](https://github.com/hug33k/FancyDisplay/blob/master/USAGE.md)
 
 ## TODO
 
