@@ -42,14 +42,3 @@ usage.c is comming soon...
     * Bold
     * Underline
     * Background
-
-* Used functions
-    * write
-    * malloc/free
-    * strdup
-    * strlen
-
-* Used includes
-    * unistd.h
-    * stdlib.h
-    * string.h
