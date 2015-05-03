@@ -9,17 +9,10 @@ You can choose your color, your style and write your message with only few lines
 FancyMsg    msg;
 
 msg = FancyDisplay_newMessage("Your message", CYAN, BOLD);
-FancyDisplay_show(msg);
+FancyDisplay_showMessage(msg);
 ````
 
 You can see more [here](https://github.com/hug33k/FancyDisplay/blob/master/USAGE.md)
-
-## TODO
-
-* FancyDisplay_printf(char *, ...)
-    * Modified printf with %FD flag
-* FancyTable
-    * Colorful table
 
 ## Informations
 
@@ -42,3 +35,12 @@ You can see more [here](https://github.com/hug33k/FancyDisplay/blob/master/USAGE
     * Bold
     * Underline
     * Background
+
+## TODO
+
+* FancyDisplay_printf(char *, ...)
+    * Modified printf with %FD flag
+* FancyTable
+    * Colorful table
+* FancyDisplay_autoRemove(bool)
+    * To remove automatically after displayed
