@@ -71,6 +71,11 @@ typedef enum	e_FancyType
 	BACKGROUND,
 }				t_FancyType;
 
+typedef enum	e_FancyCfg
+{
+	AUTORM = 0,
+}				t_FancyCfg;
+
 /*
 ** Structures
 */
@@ -106,6 +111,17 @@ typedef t_FancyClr		FancyClr;
 typedef t_FancyType		FancyType;
 typedef t_FancyStatus*	FancyStatus;
 typedef t_FancyInfo*	FancyInfo;
+typedef t_FancyCfg		FancyCfg;
+typedef int				bool;
+
+/*
+** Macros
+*/
+
+# define SHOW(clr)			write(1, clr, strlen(clr))
+
+# define TRUE				1
+# define FALSE				!TRUE
 
 /*
 ** Global variables
@@ -114,12 +130,7 @@ extern FancyStatus	FancyStatusList;
 extern char*		FancyStatusBoxOpen;
 extern char*		FancyStatusBoxClose;
 extern int			FancyStatusBoxMargin;
-
-/*
-** Macros
-*/
-
-# define SHOW(clr)	write(1, clr, strlen(clr))
+extern bool			FancyConfig[1];
 
 /*
 ** Functions
@@ -143,5 +154,9 @@ void		FancyDisplay_setStatusBox(char*, char*, int);
 FancyInfo	FancyDisplay_newInfo(char*, FancyClr, FancyType, int);
 void		FancyDisplay_showInfo(FancyInfo);
 void		FancyDisplay_deleteInfo(FancyInfo);
+
+/* _config.c */
+void		FancyDisplay_setConfig(FancyCfg, bool);
+bool		FancyDisplay_getConfig(FancyCfg);
 
 #endif /* !FANCY_DISPLAY_H_ */

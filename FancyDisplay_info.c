@@ -21,7 +21,7 @@ static int		FancyDisplay_getStatusBoxSize()
 	return (max);
 }
 
-static FancyStatus	FancyDisplay_getStatus(int value)
+static FancyStatus	FancyDisplay_getInfoStatus(int value)
 {
 	FancyStatus		tmp;
 	if (!FancyStatusList)
@@ -39,7 +39,7 @@ static void		FancyDisplay_showStatus(int value)
 	FancyStatus	status;
 
 	if ((size = FancyDisplay_getStatusBoxSize()) == -1 ||
-		(status = FancyDisplay_getStatus(value)) == NULL)
+		(status = FancyDisplay_getInfoStatus(value)) == NULL)
 		return;
 	SHOW(FancyStatusBoxOpen);
 	size -= strlen(status->name);
@@ -73,6 +73,8 @@ void	FancyDisplay_showInfo(FancyInfo info)
 {
 	FancyDisplay_showStatus(info->value);
 	FancyDisplay_showMessage(info->msg);
+	if (FancyDisplay_getConfig(AUTORM))
+		FancyDisplay_deleteInfo(info);
 }
 
 void	FancyDisplay_deleteInfo(FancyInfo info)

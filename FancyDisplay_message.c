@@ -23,6 +23,8 @@ void	FancyDisplay_showMessage(FancyMsg msg)
 	SHOW(msg->msg);
 	FancyDisplay_resetColor();
 	SHOW("\n");
+	if (FancyDisplay_getConfig(AUTORM))
+		FancyDisplay_deleteMessage(msg);
 }
 
 void	FancyDisplay_deleteMessage(FancyMsg msg)

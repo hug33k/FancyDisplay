@@ -42,5 +42,3 @@ You can see more [here](https://github.com/hug33k/FancyDisplay/blob/master/USAGE
     * Modified printf with %FD flag
 * FancyTable
     * Colorful table
-* FancyDisplay_autoRemove(bool)
-    * To remove automatically after displayed

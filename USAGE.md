@@ -61,3 +61,28 @@ FancyDisplay_showInfo(info);
 /* Delete the information */
 FancyDisplay_deleteInfo(info);
 ````
+
+## FancyCfg
+
+You can enable/disable configuration of FancyDisplay
+
+````c
+/* Get the state of a configuration
+**
+** FancyDisplay_getConfig(configuration)
+*/
+bool    state;
+
+state = FancyDisplay_getConfig(AUTORM)
+
+/* Set the state of a configuration
+**
+** FancyDisplay_setConfig(configuration, state)
+*/
+FancyDisplay_setConfig(AUTORM, TRUE);
+````
+
+The state is a boolean (TRUE or FALSE). You can't use "true" or "false", because I don't use stdbool.h (C99 only)
+
+Avaliable configurations :
+* AUTORM, to remove automatically a message/information after displayed
