@@ -12,10 +12,8 @@ static FancyCell	FancyDisplay_getHeadColumnCell(FancyCell cell)
 {
 	FancyCell	tmp;
 
-	if (cell == NULL)
-		return (NULL);
 	tmp = cell;
-	while (tmp != NULL && tmp->y != 0)
+	while (tmp && tmp->y != 0)
 		tmp = tmp->up;
 	return (tmp);
 }
@@ -24,10 +22,8 @@ static FancyCell	FancyDisplay_getHeadRowCell(FancyCell cell)
 {
 	FancyCell	tmp;
 
-	if (cell == NULL)
-		return (NULL);
 	tmp = cell;
-	while (tmp != NULL && tmp->x != 0)
+	while (tmp && tmp->x != 0)
 		tmp = tmp->left;
 	return (tmp);
 }
@@ -41,18 +37,14 @@ static void		FancyDisplay_patchCellsRow(FancyTable table, FancyCell cell)
 {
 	FancyCell	tmp;
 
-	if (!table)
+	if (!table || !(tmp = cell))
 		return;
-	tmp = cell;
 	while (tmp && tmp->x != 0)
 	{
-		if (!tmp->left)
-		{
-			if ((tmp->left = FancyDisplay_getCell(table, tmp->x - 1, tmp->y)))
-				tmp->left->right = tmp;
-			else
-				tmp->left = FancyDisplay_newEmptyCell(table, tmp->x - 1, tmp->y);
-		}
+		if (!tmp->left && (tmp->left = FancyDisplay_getCell(table, tmp->x - 1, tmp->y)))
+			tmp->left->right = tmp;
+		else if (!tmp->left)
+			tmp->left = FancyDisplay_newEmptyCell(table, tmp->x - 1, tmp->y);
 		tmp = tmp->left;
 	}
 }
@@ -61,18 +53,14 @@ static void		FancyDisplay_patchCellsColumn(FancyTable table, FancyCell cell)
 {
 	FancyCell	tmp;
 
-	if (!table)
+	if (!table || !(tmp = cell))
 		return;
-	tmp = cell;
 	while (tmp && tmp->y != 0)
 	{
-		if (!tmp->up)
-		{
-			if ((tmp->up = FancyDisplay_getCell(table, tmp->x, tmp->y - 1)))
-				tmp->up->down = tmp;
-			else
-				tmp->up = FancyDisplay_newEmptyCell(table, tmp->x, tmp->y - 1);
-		}
+		if (!tmp->up && (tmp->up = FancyDisplay_getCell(table, tmp->x, tmp->y - 1)))
+			tmp->up->down = tmp;
+		else if (!tmp->up)
+			tmp->up = FancyDisplay_newEmptyCell(table, tmp->x, tmp->y - 1);
 		tmp = tmp->up;
 	}
 }
@@ -140,8 +128,7 @@ static unsigned int	FancyDisplay_getNbCellsInAllRow(FancyCell cell)
 	nb = 0;
 	while (tmp)
 	{
-		nb_tmp = FancyDisplay_getNbCellsInRow(tmp);
-		if (nb_tmp > nb)
+		if ((nb_tmp = FancyDisplay_getNbCellsInRow(tmp)) > nb)
 			nb = nb_tmp;
 		tmp = tmp->down;
 	}
@@ -164,6 +151,7 @@ static unsigned int	FancyDisplay_getNbCellsInColumn(FancyCell cell)
 	return (nb);
 }
 */
+
 static void		FancyDisplay_showCellInline(FancyCell cell)
 {
 	if (!cell || !cell->value)
@@ -179,9 +167,8 @@ static unsigned int	FancyDisplay_getCellsMaxWidth(FancyCell cell)
 	FancyCell		tmp;
 	char			buffer[10];
 
-	if (!cell)
+	if (!(tmp = cell))
 		return (0);
-	tmp = cell;
 	sprintf(buffer, "COL %u", tmp->x);
 	size = strlen(buffer);
 	while (tmp)
@@ -202,9 +189,8 @@ static void			FancyDisplay_showCellsRowBorder(FancyCell cell, bool title, bool h
 	FancyCell		tmp;
 	FancyCell		header;
 
-	if (!cell)
+	if (!(tmp = cell))
 		return;
-	tmp = cell;
 	sprintf(buffer, "ROW %u", tmp->y);
 	loop = (title ? strlen(buffer) : 0);
 	SHOW_LOOP(" ", loop);
@@ -322,8 +308,7 @@ static void			FancyDisplay_showCellsColumnRaw(FancyCell cell)
 		tmp = tmp->down;
 	}
 	SHOW(FancyTableBox[1]);
-	pos = width;
-	SHOW_LOOP(FancyTableBox[0], pos);
+	SHOW_LOOP(FancyTableBox[0], width);
 	SHOW(FancyTableBox[1]);
 	SHOW("\n");
 }

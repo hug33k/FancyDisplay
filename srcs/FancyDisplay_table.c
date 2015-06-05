@@ -20,10 +20,7 @@ void	FancyDisplay_showTable(FancyTable table)
 {
 	if (!table || !table->title)
 		return;
-	FancyDisplay_setColor(table->title->clr, table->title->typ);
-	SHOW(table->title->msg);
-	FancyDisplay_resetColor();
-	SHOW("\n");
+	FancyDisplay_showMessage(table->title);
 	if (table->cells)
 		FancyDisplay_showCells(table->cells);
 }

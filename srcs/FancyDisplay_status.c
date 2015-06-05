@@ -39,10 +39,10 @@ void	FancyDisplay_addStatus(char *name, int define, FancyClr clr, FancyType type
 
 static void	FancyDisplay_removeStatus(FancyStatus status)
 {
-	if (status && status->next)
-		FancyDisplay_removeStatus(status->next);
 	if (status)
 	{
+		if (status->next)
+			FancyDisplay_removeStatus(status->next);
 		free(status->name);
 		free(status);
 	}
@@ -61,10 +61,12 @@ void	FancyDisplay_setStatusBox(char *open, char *close, int margin)
 {
 	if (FancyStatusBoxOpen)
 		free(FancyStatusBoxOpen);
-	FancyStatusBoxOpen = strdup(open);
+	if (open)
+		FancyStatusBoxOpen = strdup(open);
 	if (FancyStatusBoxClose)
 		free(FancyStatusBoxClose);
-	FancyStatusBoxClose = strdup(close);
+	if (close)
+		FancyStatusBoxClose = strdup(close);
 	FancyStatusBoxMargin = margin;
 }
 

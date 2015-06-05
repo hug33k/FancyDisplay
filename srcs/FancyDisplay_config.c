@@ -4,7 +4,7 @@ bool	FancyConfig[2] = {FALSE, FALSE};
 
 void	FancyDisplay_setConfig(FancyCfg conf, bool status)
 {
-	if (conf > AUTORM)
+	if (conf > TABINDX)
 		return;
 	if (status != FALSE)
 		status = TRUE;
@@ -13,7 +13,7 @@ void	FancyDisplay_setConfig(FancyCfg conf, bool status)
 
 bool	FancyDisplay_getConfig(FancyCfg conf)
 {
-	if (conf > AUTORM)
+	if (conf > TABINDX)
 		return (FALSE);
 	return (FancyConfig[conf]);
 }

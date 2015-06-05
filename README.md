@@ -50,3 +50,5 @@ make test
 
 * FancyDisplay_printf(char *, ...)
     * Modified printf with %FD flag
+* TABINDX in FancyCfg for FancyTable
+    * Display row/column number when FancyTable is displayed
