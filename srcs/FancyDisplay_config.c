@@ -1,6 +1,6 @@
 #include "FancyDisplay.h"
 
-bool	FancyConfig[1];
+bool	FancyConfig[2] = {FALSE, FALSE};
 
 void	FancyDisplay_setConfig(FancyCfg conf, bool status)
 {

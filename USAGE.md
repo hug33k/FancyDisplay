@@ -62,6 +62,75 @@ FancyDisplay_showInfo(info);
 FancyDisplay_deleteInfo(info);
 ````
 
+## FancyTable
+
+A FancyTable is a colorful table, based on FancyMsg.
+
+````c
+FancyTable    table;
+
+/* Create the table
+**
+** FancyDisplay_newTable(table name, color, style)
+*/
+table = FancyDisplay_newTable("my_table", BLUE, BOLD);
+
+/* Add a cell
+**
+** FancyDisplay_newCell(table, messace, color, style, x, y)
+*/
+FancyDisplay_newCell(table, "value1", GREEN, NORMAL, 0, 0);
+
+/* You can set cells anywhere */
+FancyDisplay_newCell(table, "value2", GREEN, NORMAL, 42, 42);
+
+/* Display the table */
+FancyDisplay_showTable(table);
+
+/* Display a single row */
+FancyDisplay_showCellsRow(table->cells);
+
+/* Display a single column */
+FancyDisplay_showCellsColumn(table->cells);
+
+FancyCell     cell;
+
+/* Get a cell
+**
+** FancyDisplay_getCell(table, x, y)
+*/
+cell = FancyDisplay_getCell(table, 42, 42);
+
+/* To move through table */
+cell = cell->up;
+cell = cell->down;
+cell = cell->left;
+cell = cell->right;
+/* If a cell is not set, cell value is NULL */
+
+/* Delete the table */
+FancyDisplay_deleteTable(table);
+
+/* Delete all the cells */
+FancyDisplay_deleteCells(cell);
+/* cell can be any cell from the table */
+
+/* Delete a single cell */
+FancyDisplay_deleteCell(cell);
+
+/* Delete a row or a column */
+FancyDisplay_deleteCellsRow(cell);
+FancyDisplay_deleteCellsColumn(cell);
+
+/* To change table borders
+**
+** FancyTableBox[0] for top and bottom
+** FancyTableBox[1] for corners
+** FancyTableBox[2] for left and right
+*/
+char    *FancyTableBox[3] = {"-", "+", "|"};
+````
+
 ## FancyCfg
 
 You can enable/disable configuration of FancyDisplay

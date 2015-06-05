@@ -74,7 +74,15 @@ typedef enum	e_FancyType
 typedef enum	e_FancyCfg
 {
 	AUTORM = 0,
+	TABINDX,
 }				t_FancyCfg;
+
+typedef enum	e_FancyCellType
+{
+	TTL_COL,
+	TTL_ROW,
+	CELL,
+}				t_FancyCellType;
 
 /*
 ** Structures
@@ -102,6 +110,26 @@ typedef struct		s_FancyInfo
 	int				value;
 }					t_FancyInfo;
 
+typedef struct			s_FancyCell
+{
+	t_FancyMsg			*value;
+	t_FancyCellType		type;
+	unsigned int		x;
+	unsigned int		y;
+	struct s_FancyCell	*left;
+	struct s_FancyCell	*right;
+	struct s_FancyCell	*up;
+	struct s_FancyCell	*down;
+}						t_FancyCell;
+
+typedef struct		s_FancyTable
+{
+	t_FancyMsg		*title;
+	t_FancyCell		*cells;
+	unsigned int	x;
+	unsigned int	y;
+}					t_FancyTable;
+
 /*
 ** Typedefs
 */
@@ -112,6 +140,8 @@ typedef t_FancyType		FancyType;
 typedef t_FancyStatus*	FancyStatus;
 typedef t_FancyInfo*	FancyInfo;
 typedef t_FancyCfg		FancyCfg;
+typedef t_FancyCell*	FancyCell;
+typedef t_FancyTable*	FancyTable;
 typedef int				bool;
 
 /*
@@ -119,6 +149,7 @@ typedef int				bool;
 */
 
 # define SHOW(clr)			write(1, clr, strlen(clr))
+# define SHOW_LOOP(c, n)	while(n--)SHOW(c);
 
 # define TRUE				1
 # define FALSE				!TRUE
@@ -129,34 +160,52 @@ typedef int				bool;
 extern FancyStatus	FancyStatusList;
 extern char*		FancyStatusBoxOpen;
 extern char*		FancyStatusBoxClose;
+extern char			*FancyTableBox[3];
 extern int			FancyStatusBoxMargin;
-extern bool			FancyConfig[1];
+extern bool			FancyConfig[2];
 
 /*
 ** Functions
 */
 
 /* _message.c */
-FancyMsg	FancyDisplay_newMessage(char*, FancyClr, FancyType);
-void		FancyDisplay_showMessage(FancyMsg);
-void		FancyDisplay_deleteMessage(FancyMsg);
-
-/* _color.c */
-void		FancyDisplay_setColor(FancyClr, FancyType);
-void		FancyDisplay_resetColor(void);
+FancyMsg			FancyDisplay_newMessage(char*, FancyClr, FancyType);
+void				FancyDisplay_showMessage(FancyMsg);
+void				FancyDisplay_deleteMessage(FancyMsg);
 
 /* _status.c */
-void		FancyDisplay_addStatus(char*, int, FancyClr, FancyType);
-void		FancyDisplay_deleteStatus(void);
-void		FancyDisplay_setStatusBox(char*, char*, int);
+void				FancyDisplay_addStatus(char*, int, FancyClr, FancyType);
+void				FancyDisplay_deleteStatus(void);
+void				FancyDisplay_setStatusBox(char*, char*, int);
 
 /*  _info.c */
-FancyInfo	FancyDisplay_newInfo(char*, FancyClr, FancyType, int);
-void		FancyDisplay_showInfo(FancyInfo);
-void		FancyDisplay_deleteInfo(FancyInfo);
+FancyInfo			FancyDisplay_newInfo(char*, FancyClr, FancyType, int);
+void				FancyDisplay_showInfo(FancyInfo);
+void				FancyDisplay_deleteInfo(FancyInfo);
+
+/* _cell.c */
+FancyCell			FancyDisplay_newCell(FancyTable, char*, FancyClr, FancyType, unsigned int, unsigned int);
+FancyCell			FancyDisplay_getCell(FancyTable, unsigned int, unsigned int);
+void				FancyDisplay_showCell(FancyCell);
+void				FancyDisplay_showCells(FancyCell);
+void				FancyDisplay_showCellsRow(FancyCell);
+void				FancyDisplay_showCellsColumn(FancyCell);
+void				FancyDisplay_deleteCell(FancyCell);
+void				FancyDisplay_deleteCells(FancyCell);
+void				FancyDisplay_deleteCellsRow(FancyCell);
+void				FancyDisplay_deleteCellsColumn(FancyCell);
+
+/* _table.c */
+FancyTable			FancyDisplay_newTable(char *, FancyClr, FancyType);
+void				FancyDisplay_showTable(FancyTable);
+void				FancyDisplay_deleteTable(FancyTable);
+
+/* _color.c */
+void				FancyDisplay_setColor(FancyClr, FancyType);
+void				FancyDisplay_resetColor(void);
 
 /* _config.c */
-void		FancyDisplay_setConfig(FancyCfg, bool);
-bool		FancyDisplay_getConfig(FancyCfg);
+void				FancyDisplay_setConfig(FancyCfg, bool);
+bool				FancyDisplay_getConfig(FancyCfg);
 
 #endif /* !FANCY_DISPLAY_H_ */

@@ -14,11 +14,21 @@ FancyDisplay_showMessage(msg);
 
 You can see more [here](https://github.com/hug33k/FancyDisplay/blob/master/USAGE.md)
 
+## Tests
+
+You can find code examples in tests folder.
+
+````bash
+make test
+./tests/bins/[TEST NAME]
+````
+
 ## Informations
 
 * Available modes
     * FancyMsg
     * FancyInfo (Works with FancyStatus)
+    * FancyTable
 
 * Available colors
     * Black
@@ -40,5 +50,3 @@ You can see more [here](https://github.com/hug33k/FancyDisplay/blob/master/USAGE
 
 * FancyDisplay_printf(char *, ...)
     * Modified printf with %FD flag
-* FancyTable
-    * Colorful table
