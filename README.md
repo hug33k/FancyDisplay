@@ -1,4 +1,4 @@
-# FancyDisplay
+# FancyDisplay [![Build Status](https://travis-ci.org/hug33k/FancyDisplay.svg?branch=master)](https://travis-ci.org/hug33k/FancyDisplay)
 
 FancyDisplay is an easy way to have a colorful display in your terminal.
 You can choose your color, your style and write your message with only few lines.
