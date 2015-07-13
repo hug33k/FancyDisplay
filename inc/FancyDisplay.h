@@ -148,7 +148,7 @@ typedef int				bool;
 ** Macros
 */
 
-# define SHOW(clr)			if(&clr)write(1, clr, strlen(clr))
+# define SHOW(clr)			write(1, clr, strlen(clr))
 # define SHOW_LOOP(c, n)	while(n--)SHOW(c);
 
 # define TRUE				1
