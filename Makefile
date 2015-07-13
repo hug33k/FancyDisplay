@@ -52,6 +52,9 @@ $(NAME_LIB):	$(OBJS)
 
 all:	$(NAME)
 
+%.o:	%.c
+		$(CC) $(CFLAGS) -c -o $@ $<
+
 test:	$(NAME)
 		$(foreach single_test,$(TEST), $(shell $(CC) $(single_test) $(DFLAGS) -o $(single_test:$(DIR_SRCTEST)/%.c=$(DIR_BINTEST)/%) -L. -l$(NAME_LIB:lib%.a=%)))
 
