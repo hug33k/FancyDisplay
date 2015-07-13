@@ -5,3 +5,8 @@ compiler:
   - gcc
 
 script: make
+
+notifications:
+  email:
+    - hugo.schoch@epitech.eu
+  slack: humanitteam:aTSNbWw7onX59iHYkPPpk72i
